@@ -22,9 +22,6 @@ namespace Analyzer.app
             Console.WriteLine($"Anzahl Hosts:\t\t{ip.AnzahlHosts}");
             Console.WriteLine($"Anzahl Subnetze:\t{ip.AnzahlNachbarnetze}");
             Console.ReadKey();
-            Console.ReadKey();
-           
-            
         }
            
     }
