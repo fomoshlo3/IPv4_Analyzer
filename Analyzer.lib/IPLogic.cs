@@ -19,7 +19,8 @@ namespace Analyzer.lib
 
         public IPLogic() //Konstruktor
         {
-            Input = "192.168.1.30/10";
+            //TODO: Dynamische Eingabe
+            Input = "192.168.0.4/23";
             Suffix = GetSuffix(Input);
             IPAdresse = GetIPAdresse(Input);
             Subnetzmaske = GetSubnetzmaske(Suffix);
