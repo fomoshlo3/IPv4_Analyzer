@@ -8,7 +8,7 @@ namespace Analyzer.lib
 {
     public class IPLogic
     {
-        private string _Input;   //Felder
+        private string _Input = string.Empty;   //Felder
         private int _Suffix;
         private byte[] _IPAdresse;
         private byte[] _Subnetzmaske;
@@ -16,58 +16,56 @@ namespace Analyzer.lib
         private byte[] _BroadcastAdresse;
         private int _AnzahlNachbarnetze;
         private double _AnzahlHosts;
-      
-        private string _Output;
 
+        public string Input { get => _Input;private set  => _Input = value; }
+        public int Suffix { get => _Suffix;private set=> _Suffix = value; }
+        public byte[] IPAdresse { get => _IPAdresse; private set => _IPAdresse = value; }
+        public byte[] Subnetzmaske { get => _Subnetzmaske; private set => _Subnetzmaske = value; }
+        public byte[] NetzwerkAdresse { get => _NetzwerkAdresse ;private set => _NetzwerkAdresse = value; }
+        public byte[] BroadcastAdresse { get => _BroadcastAdresse ;private set => _BroadcastAdresse = value; }
+        public int AnzahlNachbarnetze { get => _AnzahlNachbarnetze;private set => _AnzahlNachbarnetze = value; }
+        public double AnzahlHosts { get => _AnzahlHosts; private set => _AnzahlHosts = value; }
+        
         public IPLogic() //Konstruktor
         {
-            _Input = "192.168.1.30/10";
-            _Suffix = GetSuffix(_Input);
-            _IPAdresse = GetIPAdresse(_Input);
-            _Subnetzmaske = GetSubnetzmaske(_Suffix);
-            _NetzwerkAdresse = GetNetzwerkAdresse(_IPAdresse, _Subnetzmaske);
-            _BroadcastAdresse = GetBroadcastAdresse(_NetzwerkAdresse, _Subnetzmaske);
-            _AnzahlHosts = GetAnzahlHosts(_Suffix);
-            _AnzahlNachbarnetze = GetAnzahlSubnetze(_Suffix);
-            
-
-            //Console Output
-            Console.WriteLine($"IP Adresse:\t\t{_IPAdresse[0]}.{_IPAdresse[1]}.{_IPAdresse[2]}.{_IPAdresse[3]}");
-            Console.WriteLine($"Subnetzmaske:\t\t{_Subnetzmaske[0]}.{_Subnetzmaske[1]}.{_Subnetzmaske[2]}.{_Subnetzmaske[3]}");
-            Console.WriteLine($"Netzwerkadresse:\t{_NetzwerkAdresse[0]}.{_NetzwerkAdresse[1]}.{_NetzwerkAdresse[2]}.{_NetzwerkAdresse[3]}");
-            Console.WriteLine($"Broadcastadresse:\t{_BroadcastAdresse[0]}.{_BroadcastAdresse[1]}.{_BroadcastAdresse[2]}.{_BroadcastAdresse[3]}");
-            Console.WriteLine($"Anzahl Hosts:\t\t{_AnzahlHosts}");
-            Console.WriteLine($"Anzahl Subnetze:\t{_AnzahlNachbarnetze}");
-            Console.ReadKey();
+            //TODO: Dynamische Eingabe, hab mich hier in der Projektplanung verzettelt. Wollte WinForms machen, die sind aber noch sehr verwirrend für mich.
+            Input = "192.168.0.4/25";
+            Suffix = GetSuffix(Input);
+            IPAdresse = GetIPAdresse(Input);
+            Subnetzmaske = GetSubnetzmaske(Suffix);
+            NetzwerkAdresse = GetNetzwerkAdresse(IPAdresse, Subnetzmaske);
+            BroadcastAdresse = GetBroadcastAdresse(NetzwerkAdresse, Subnetzmaske);
+            AnzahlHosts = GetAnzahlHosts(Suffix);
+            AnzahlNachbarnetze = GetAnzahlSubnetze(Suffix);
         }
 
 
         /// <summary>
         /// Parses the suffix out of the input string an converts it to integer
         /// </summary>
-        /// <param name="_Input"></param>
+        /// <param name="Input"></param>
         /// <returns>Int Suffix</returns>
-        public int GetSuffix(string _Input)
+        public static int GetSuffix(string Input)
         {
-            int substringStart = _Input.IndexOf('/') +1;
-            int substringEnd = _Input.Length - substringStart;
-            int Suffix = Int32.Parse(_Input.Substring(substringStart, substringEnd));
+            int substringStart = Input.IndexOf('/') +1;
+            int substringEnd = Input.Length - substringStart;
+            int Suffix = Int32.Parse(Input.Substring(substringStart, substringEnd));
             return Suffix;
         }
 
         /// <summary>
         ///builds a byte representation of a subnetmask from suffix
         /// </summary>
-        /// <param name="_Suffix"></param>
+        /// <param name="Suffix"></param>
         /// <returns>byte[] Adresse</returns>
-        public byte[] GetSubnetzmaske(int _Suffix) 
+        public static byte[] GetSubnetzmaske(int Suffix) 
         {
             
             string SubnetmaskDotBinary = string.Empty;
 
             for (int j = 1; j <= 32; j++)
             {
-                if (j <= _Suffix)
+                if (j <= Suffix)
                 {
                     SubnetmaskDotBinary += '1';
                 }
@@ -89,12 +87,12 @@ namespace Analyzer.lib
         /// <summary>
         /// Parses the Input by '.' and '/'and converts the resulting string array to a byte array explanation of an IP adress.
         /// </summary>
-        /// <param name="_Input"></param>
+        /// <param name="Input"></param>
         /// <returns></returns>
-        public byte[] GetIPAdresse(string _Input)
+        public static byte[] GetIPAdresse(string Input)
         {
             byte[] Adresse = new byte[4];
-            string[] sAdresse = _Input.Substring(0, _Input.IndexOf('/')).Split('.');
+            string[] sAdresse = Input[..Input.IndexOf('/')].Split('.');
 
 
             for (int i = 0; i < sAdresse.Length; i++)
@@ -110,7 +108,7 @@ namespace Analyzer.lib
         /// <param name="IPAdresse"></param>
         /// <param name="Subnetzmaske"></param>
         /// <returns>Byte Array with 4 fields which are explanatory for the 4 fields of an IP</returns>
-        public byte[] GetNetzwerkAdresse(byte[] IPAdresse, byte[] Subnetzmaske)
+        public static byte[] GetNetzwerkAdresse(byte[] IPAdresse, byte[] Subnetzmaske)
         {
             byte[] Adresse = new byte[4];
             for (int i = 0; i < 4; i++)
@@ -125,7 +123,7 @@ namespace Analyzer.lib
         /// <param name="Subnetzmaske"></param>
         /// <param name="NetzwerkAdresse"></param>
         /// <returns>Byte Array with 4 fields which are explanatory for the 4 fields of an IP</returns>
-        public byte[] GetBroadcastAdresse(byte[] NetzwerkAdresse, byte[] Subnetzmaske)
+        public static byte[] GetBroadcastAdresse(byte[] NetzwerkAdresse, byte[] Subnetzmaske)
         {
             byte[] Adresse = new byte[4];
             for (int i = 0; i < 4; i++)
@@ -137,24 +135,24 @@ namespace Analyzer.lib
         /// <summary>
         /// calculates the number of hosts possible from suffix
         /// </summary>
-        /// <param name="_Suffix"></param>
+        /// <param name="Suffix"></param>
         /// <returns>Number of possible hosts</returns>
-        public double GetAnzahlHosts(int _Suffix)
+        public static double GetAnzahlHosts(int Suffix)
         {
-            double Exp = (32 - _Suffix);
+            double Exp = (32 - Suffix);
             double Anzahl = Math.Pow(2,Exp) - 2;
             return Anzahl;
         }
         /// <summary>
         /// calculates the number of subnetworks possible from suffix
         /// </summary>
-        /// <param name="_Suffix"></param>
-        /// <returns></returns>
-        public int GetAnzahlSubnetze(int _Suffix)
+        /// <param name="Suffix"></param>
+        /// <returns>Count of subnetworks</returns>
+        public static int GetAnzahlSubnetze(int Suffix)
         {
-            int Exp = _Suffix % 8;
+            int Exp = Suffix % 8;
             int Anzahl = 1;
-            return Anzahl = (Anzahl << Exp);
+            return Anzahl <<= Exp;
         }
     }
 }
