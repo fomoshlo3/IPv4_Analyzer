@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyzer.app", "Tutorial\Analyzer.app.csproj", "{2D0234A5-6785-45C3-93BD-C014D4F8273E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analyzer.lib", "Analyzer.lib\Analyzer.lib.csproj", "{0AD2B745-523C-4804-9178-D4D47B3DE241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyzer.lib", "Analyzer.lib\Analyzer.lib.csproj", "{0AD2B745-523C-4804-9178-D4D47B3DE241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPAnalyzer.GUI", "IPAnalyzer.GUI\IPAnalyzer.GUI.csproj", "{54AC7FB2-6A4B-41E8-A553-7CDCF1930D6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0AD2B745-523C-4804-9178-D4D47B3DE241}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AD2B745-523C-4804-9178-D4D47B3DE241}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AD2B745-523C-4804-9178-D4D47B3DE241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54AC7FB2-6A4B-41E8-A553-7CDCF1930D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54AC7FB2-6A4B-41E8-A553-7CDCF1930D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54AC7FB2-6A4B-41E8-A553-7CDCF1930D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54AC7FB2-6A4B-41E8-A553-7CDCF1930D6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

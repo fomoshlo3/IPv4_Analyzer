@@ -12,7 +12,10 @@ namespace Analyzer.app
     {
         static void Main()
         {
-            IPLogic ip = new IPLogic();
+            Console.WriteLine("Bitte gebe die zu analysierende IP Addresse ein:\n");
+            string input = Console.ReadLine();
+
+            IPLogic ip = new IPLogic(input);
 
             //Console Output
             Console.WriteLine($"IP Adresse:\t\t{ip.IPAdresse[0]}.{ip.IPAdresse[1]}.{ip.IPAdresse[2]}.{ip.IPAdresse[3]}");

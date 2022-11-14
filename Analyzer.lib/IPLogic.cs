@@ -26,10 +26,10 @@ namespace Analyzer.lib
         public int AnzahlNachbarnetze { get => _AnzahlNachbarnetze;private set => _AnzahlNachbarnetze = value; }
         public double AnzahlHosts { get => _AnzahlHosts; private set => _AnzahlHosts = value; }
         
-        public IPLogic() //Konstruktor
+        public IPLogic(string input) //Konstruktor
         {
             //TODO: Dynamische Eingabe, hab mich hier in der Projektplanung verzettelt. Wollte WinForms machen, die sind aber noch sehr verwirrend für mich.
-            Input = "192.168.0.4/25";
+            Input = input;
             Suffix = GetSuffix(Input);
             IPAdresse = GetIPAdresse(Input);
             Subnetzmaske = GetSubnetzmaske(Suffix);
