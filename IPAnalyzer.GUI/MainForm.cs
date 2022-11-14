@@ -31,7 +31,7 @@ namespace IPAnalyzer.GUI
                     $"{Task.BroadcastAdresse[0]}.{Task.BroadcastAdresse[1]}.{Task.BroadcastAdresse[2]}.{Task.BroadcastAdresse[3]}\n" +
                     $"{Task.AnzahlHosts}\n" +
                     $"{Task.AnzahlNachbarnetze}";
-                    Refresh();
+                    
                 //}
                 //catch(FormatException) // xxx.xxx.xxx.xxx/45 TODO: Googlen
                 //{
