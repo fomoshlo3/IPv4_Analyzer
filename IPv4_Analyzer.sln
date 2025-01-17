@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analyzer.app", "Tutorial\An
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analyzer.lib", "Analyzer.lib\Analyzer.lib.csproj", "{0AD2B745-523C-4804-9178-D4D47B3DE241}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analyzer.WPFApp", "Analyzer.WPFApp\Analyzer.WPFApp.csproj", "{A8F55142-2CA7-49FB-80F0-0F4D7E7EA783}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0AD2B745-523C-4804-9178-D4D47B3DE241}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AD2B745-523C-4804-9178-D4D47B3DE241}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AD2B745-523C-4804-9178-D4D47B3DE241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F55142-2CA7-49FB-80F0-0F4D7E7EA783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F55142-2CA7-49FB-80F0-0F4D7E7EA783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F55142-2CA7-49FB-80F0-0F4D7E7EA783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F55142-2CA7-49FB-80F0-0F4D7E7EA783}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
