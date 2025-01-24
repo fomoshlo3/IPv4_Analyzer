@@ -7,7 +7,20 @@ namespace Analyzer.app
     {
         static void Main()
         {
-            IPv4AddressAnalyzer ip = new IPv4AddressAnalyzer("192.168.0.1/24");
+            string[] inputs = ["255.255.255.0", "", "255.255.0", "192.168.172.abc", "-1.255.255.0"];
+
+            foreach (string input in inputs)
+            {
+                try
+                {
+                    Console.WriteLine(new IPv4Address(input));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
 
             ////Console Output
             //Console.WriteLine($"IP Adresse:\t\t{ip.IPAdresse[0]}.{ip.IPAdresse[1]}.{ip.IPAdresse[2]}.{ip.IPAdresse[3]}");
